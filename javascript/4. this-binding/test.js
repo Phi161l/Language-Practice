@@ -79,3 +79,83 @@ const team = {
 };
 
 team.showMembers(); // ?
+
+
+
+
+a = 3
+console.log(a)
+var a = 2
+
+
+
+
+
+
+
+
+const car = {
+  brand: "Toyota",
+  showBrand() {
+    console.log(this.brand);
+  }
+};
+
+car.showBrand(); // ?
+
+const fn1 = car.showBrand;
+fn1(); // ?
+
+
+
+const obj = {
+  name: "Ibrahim",
+  outer() {
+    console.log("outer:", this.name);
+
+    function inner() {
+      console.log("inner:", this.name);
+    }
+
+    inner();
+  }
+};
+
+obj.outer(); // ?
+
+
+
+const user2 = {
+  name: "Abel",
+  greet() {
+    console.log("Hello", this.name);
+  }
+};
+
+setTimeout(user2.greet, 100); // ?
+
+
+
+function User(name) {
+  this.name = name;
+
+  this.say = () => {
+    console.log(this.name);
+  };
+}
+
+const u1 = new User("Daniel");
+const sayFn = u1.say;
+sayFn(); // ?
+
+
+
+
+const test = {
+  name: "Node",
+  show: () => {
+    console.log(this.name);
+  }
+};
+
+test.show(); // ?
