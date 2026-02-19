@@ -1,0 +1,71 @@
+/**
+ * EXPERIMENT 8: HARD ASYNC & EVENT LOOP PRACTICE
+ *
+ * Challenge:
+ * - Nested macrotasks
+ * - Nested microtasks
+ * - async/await mixed in
+ * - Predict execution order
+ */
+
+console.log("========== HARD PRACTICE START ==========");
+
+// SYNC + TIMEOUT + PROMISE
+console.log("L1 (sync)");
+
+setTimeout(() => {
+  console.log("L2 (timeout 1)");
+
+  Promise.resolve().then(() => {
+    console.log("L3 (promise inside timeout 1)");
+  });
+
+  setTimeout(() => {
+    console.log("L4 (nested timeout)");
+  }, 0);
+
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("L5 (promise 1)");
+}).then(() => {
+  console.log("L6 (chained promise 2)");
+});
+
+console.log("L7 (sync end)");
+
+
+// ASYNC/AWAIT MIX
+async function hardAsync() {
+  console.log("A1 (async start)");
+
+  await Promise.resolve();
+  console.log("A2 (after await)");
+
+  setTimeout(() => {
+    console.log("A3 (timeout inside async)");
+  }, 0);
+
+  await Promise.resolve();
+  console.log("A4 (second await done)");
+}
+
+hardAsync();
+console.log("A5 (after async call)");
+
+
+// COMPLEX NESTED PROMISES
+Promise.resolve().then(() => {
+  console.log("P1 (outer promise)");
+
+  Promise.resolve().then(() => {
+    console.log("P2 (nested promise inside outer)");
+  });
+
+  setTimeout(() => {
+    console.log("P3 (timeout inside outer promise)");
+  }, 0);
+
+});
+
+console.log("END OF HARD PRACTICE");
