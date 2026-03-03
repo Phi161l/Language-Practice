@@ -103,3 +103,74 @@ if (global.gc) {
 } else {
   console.log("GC not exposed. Run with --expose-gc");
 }
+
+
+
+function attachListener() {
+  let largeData = new Array(1_000_000).fill("📦");
+
+  function handler() {
+    console.log("Clicked");
+  }
+
+  document.addEventListener("click", handler);
+}
+
+attachListener();
+
+
+
+
+function attachListener() {
+  let largeData = new Array(1_000_000).fill("📦");
+
+  function handler() {
+    console.log("Clicked");
+  }
+
+  document.addEventListener("click", handler);
+
+  // Later, cleanup
+  return () => {
+    document.removeEventListener("click", handler);
+    largeData = null; // optional, for clarity
+  };
+}
+
+const cleanup = attachListener();
+// When no longer needed
+cleanup();
+
+
+
+
+
+function startProcess() {
+  let bigData = new Array(1_000_000).fill("⏳");
+
+  setInterval(() => {
+    console.log("Processing...");
+  }, 1000);
+}
+
+startProcess();
+
+
+
+
+function startProcess() {
+  let bigData = new Array(1_000_000).fill("⏳");
+
+  const intervalId = setInterval(() => {
+    console.log("Processing...");
+  }, 1000);
+
+  // Cleanup after 5 seconds
+  setTimeout(() => {
+    clearInterval(intervalId);
+    bigData = null; // optional, just for clarity
+    console.log("Interval cleared and memory released.");
+  }, 5000);
+}
+
+startProcess();
