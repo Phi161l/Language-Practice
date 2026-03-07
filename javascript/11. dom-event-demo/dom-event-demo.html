@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Event Propagation Demo</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 40px;
+    }
+
+    .box {
+      padding: 40px;
+      border: 3px solid black;
+      margin: 20px;
+    }
+
+    #grandparent {
+      background: #ffdede;
+    }
+
+    #parent {
+      background: #deecff;
+    }
+
+    #child {
+      background: #e7ffd9;
+      cursor: pointer;
+    }
+
+    ul {
+      margin-top: 40px;
+    }
+
+    li {
+      cursor: pointer;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Event Propagation Demo</h2>
+
+<div id="grandparent" class="box">
+  Grandparent
+  <div id="parent" class="box">
+    Parent
+    <div id="child" class="box">
+      Child (Click Me)
+    </div>
+  </div>
+</div>
+
+<h2>Event Delegation Demo</h2>
+
+<ul id="list">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
+
+<script src="script.js"></script>
+
+</body>
+</html>
+
