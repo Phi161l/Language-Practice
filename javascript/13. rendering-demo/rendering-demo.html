@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rendering Pipeline Demo</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      padding: 40px;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background: red;
+      margin-top: 20px;
+      transition: all 0.2s;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>Browser Rendering Experiment</h2>
+
+<button id="reflowBtn">Trigger Reflow</button>
+<button id="repaintBtn">Trigger Repaint</button>
+<button id="batchBtn">Batch DOM Updates</button>
+
+<div id="box"></div>
+
+<script src="render.js"></script>
+
+</body>
+</html>
